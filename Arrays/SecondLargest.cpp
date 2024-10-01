@@ -1,14 +1,18 @@
-int secondLargest(int arr[], int n){
-    int res=-1, largest=0;
-    for(int i=1; i<n; i++){
-        if(arr[i]>arr[largest]){ //agar current element largest se bada hai to
-            res=largest; //current largest element ko res me daal denge 
-            largest=i; // current element ko lagest maan lenge
+class Solution {
+public:
+    int getSecondLargest(vector<int> &arr) {
+        // Code Here
+        int largest = arr[0];
+        int slargest = -1;
+        for (int i=0; i<arr.size(); i++){
+            if (arr[i]> largest){
+                slargest = largest;
+                largest = arr[i];
+            }
+            else if (arr[i]<largest && arr[i]>slargest){
+                slargest = arr[i];
+            }
         }
-        else if(arr[i]!=arr[largest]){
-            if(res==-1 || arr[i]>arr[res]);
-            res=i;
-        }
+        return slargest;
     }
-    return res;
-}
+};
