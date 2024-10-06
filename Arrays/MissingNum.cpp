@@ -12,3 +12,5 @@ public:
         return missingNumber;
     }
 };
+
+//Missing Number = Actual Sum - Sum of Array
