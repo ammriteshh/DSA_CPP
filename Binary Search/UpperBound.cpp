@@ -1,20 +1,18 @@
-int findFloor(vector<long long> &v, long long n, long long x) {
+class Solution {
+public:
+    int upperBound(vector<int>& nums, int target) {
+        int low = 0;
+        int high = nums.size();  // We initialize high to nums.size() to handle cases when target is larger than all elements
 
-    // Your code here
-    int low = 0;
-    int high = n-1;
-    long long ans = -1;
+        while (low < high) {
+            int mid = (low + high) / 2;
 
-    while(low<=high){
-        long long mid = (low+high)/2;
-
-        if(v[mid] <= x){
-            ans = mid; //maybe the answer
-            low = mid+1; //go for right for the answer
+            if (nums[mid] <= target) {
+                low = mid + 1;  // Move right because mid is less than or equal to target
+            } else {
+                high = mid;     // Move high to mid because we want to find the smallest number greater than target
+            }
         }
-        else{
-            high = mid-1; // else go for left
-        }
+        return low;  // `low` will point to the first element greater than target (upper bound)
     }
-    return ans;
-}
+};
