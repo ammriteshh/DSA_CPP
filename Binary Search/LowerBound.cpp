@@ -9,15 +9,11 @@ int findFloor(vector<long long> &v, long long n, long long x) {
         long long mid = (low+high)/2;
 
         if(v[mid] <= x){
-            ans = mid;
-            low = mid+1;
+            ans = mid; //maybe the answer
+            low = mid+1; //go for right for the answer
         }
         else{
-            high = mid-1;
-            // }
-            // else{
-            //     high = mid-1;
-            // }
+            high = mid-1; // else go for left
         }
     }
     return ans;
