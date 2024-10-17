@@ -1,20 +1,23 @@
-int findFloor(vector<long long> &v, long long n, long long x) {
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int low = 0;
+        int high = nums.size() - 1; // use nums.size() to get n
 
-    // Your code here
-    int low = 0;
-    int high = n-1;
-    long long ans = -1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
 
-    while(low<=high){
-        long long mid = (low+high)/2;
-
-        if(v[mid] <= x){
-            ans = mid; //maybe the answer
-            low = mid+1; //go for right for the answer
+            if (nums[mid] == target) {
+                return mid;  // If target is found, return the index
+            }
+            else if (nums[mid] < target) {
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
         }
-        else{
-            high = mid-1; // else go for left
-        }
+        // If the target is not found, return the position where it would be inserted
+        return low;
     }
-    return ans;
-}
+};
